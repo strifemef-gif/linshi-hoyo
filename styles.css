@@ -1,16 +1,23 @@
 :root {
-  --bg: #fff4f0;
-  --bg-deep: #ffe8ef;
-  --ink: #3a1f28;
-  --ink-soft: #4f2d38;
-  --muted: #7a4e5c;
-  --blush: #f2a8b8;
-  --blush-deep: #c44d68;
-  --butter: #f3d78a;
-  --butter-deep: #e8c56a;
-  --cream: #fffaf6;
-  --line: rgba(196, 77, 104, 0.28);
+  --bg: #07050f;
+  --ink: #f3eaf8;
+  --ink-soft: #d5c4e4;
+  --muted: #9a87b0;
+  --magenta: #ff3d7a;
+  --magenta-soft: #ff6b9d;
+  --violet: #8b5cf6;
+  --violet-deep: #5b2d9e;
+  --lavender: #c4a8e8;
+  --silver: #c9c4d6;
+  --panel: rgba(22, 12, 38, 0.78);
+  --line: rgba(255, 61, 122, 0.28);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* aliases used across components */
+  --blush: var(--magenta-soft);
+  --blush-deep: var(--magenta);
+  --butter: var(--lavender);
+  --butter-deep: var(--silver);
 }
 
 *,
@@ -40,10 +47,10 @@ body {
   z-index: -1;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 90% 55% at 15% -5%, #ffe3a8 0%, transparent 55%),
-    radial-gradient(ellipse 70% 50% at 95% 20%, #ffc9d6 0%, transparent 50%),
-    radial-gradient(ellipse 60% 45% at 50% 100%, #ffd6e2 0%, transparent 55%),
-    linear-gradient(165deg, #fff8f2 0%, #ffeef3 45%, #fff5eb 100%);
+    radial-gradient(ellipse 80% 50% at 12% -8%, rgba(91, 45, 158, 0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 45% at 95% 15%, rgba(255, 61, 122, 0.28) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 40% at 50% 110%, rgba(70, 20, 110, 0.5) 0%, transparent 55%),
+    linear-gradient(165deg, #05040c 0%, #12081f 42%, #0a0614 100%);
 }
 
 .mist {
@@ -52,20 +59,20 @@ body {
   height: 70vmax;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.45;
+  opacity: 0.4;
   animation: drift 22s var(--ease) infinite alternate;
 }
 
 .mist-a {
   top: -25%;
   left: -18%;
-  background: radial-gradient(circle, #ffe5a0 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(91, 45, 158, 0.7) 0%, transparent 70%);
 }
 
 .mist-b {
   bottom: -30%;
   right: -22%;
-  background: radial-gradient(circle, #ffb8cb 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 61, 122, 0.45) 0%, transparent 70%);
   animation-delay: -8s;
   animation-duration: 28s;
 }
@@ -74,12 +81,12 @@ body {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(2px 2px at 12% 18%, rgba(243, 215, 138, 0.7), transparent),
-    radial-gradient(1.5px 1.5px at 28% 62%, rgba(242, 168, 184, 0.55), transparent),
-    radial-gradient(2px 2px at 72% 28%, rgba(243, 215, 138, 0.6), transparent),
-    radial-gradient(1.5px 1.5px at 88% 72%, rgba(255, 186, 200, 0.5), transparent),
-    radial-gradient(1px 1px at 45% 40%, rgba(255, 255, 255, 0.7), transparent),
-    radial-gradient(2px 2px at 60% 85%, rgba(243, 215, 138, 0.45), transparent);
+    radial-gradient(2px 2px at 12% 18%, rgba(255, 61, 122, 0.85), transparent),
+    radial-gradient(1.5px 1.5px at 28% 62%, rgba(196, 168, 232, 0.55), transparent),
+    radial-gradient(2px 2px at 72% 28%, rgba(255, 107, 157, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 88% 72%, rgba(139, 92, 246, 0.55), transparent),
+    radial-gradient(1px 1px at 45% 40%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(2px 2px at 60% 85%, rgba(255, 61, 122, 0.5), transparent);
   animation: twinkle 6s ease-in-out infinite alternate;
   pointer-events: none;
 }
@@ -90,7 +97,7 @@ body {
 }
 
 @keyframes twinkle {
-  from { opacity: 0.5; }
+  from { opacity: 0.45; }
   to { opacity: 1; }
 }
 
@@ -121,11 +128,12 @@ main,
 }
 
 .mark {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.15rem;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--blush-deep);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: var(--magenta-soft);
   text-decoration: none;
 }
 
@@ -149,7 +157,7 @@ nav a:hover {
 }
 
 .nav-cta {
-  color: var(--blush-deep) !important;
+  color: var(--magenta) !important;
 }
 
 .hero {
@@ -166,14 +174,15 @@ nav a:hover {
 
 .brand {
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.8rem, 9vw, 4.25rem);
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.4rem, 8vw, 3.6rem);
   font-weight: 600;
-  font-style: italic;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.06em;
   line-height: 1;
-  color: var(--blush-deep);
-  text-shadow: 0 0 50px rgba(242, 168, 184, 0.45);
+  color: var(--ink);
+  text-shadow:
+    0 0 24px rgba(255, 61, 122, 0.45),
+    0 0 60px rgba(91, 45, 158, 0.4);
   animation: sticker-float 3.2s ease-in-out infinite;
 }
 
@@ -186,6 +195,7 @@ nav a:hover {
   pointer-events: none;
   user-select: none;
   animation: sticker-float 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 61, 122, 0.35));
 }
 
 @keyframes sticker-float {
@@ -200,14 +210,14 @@ nav a:hover {
   font-size: clamp(1.55rem, 4.2vw, 2rem);
   font-weight: 500;
   line-height: 1.25;
-  color: var(--ink);
+  color: var(--lavender);
 }
 
 .lead {
   margin: 0 0 1.75rem;
   max-width: 34ch;
   font-size: 0.98rem;
-  color: var(--ink-soft);
+  color: var(--muted);
 }
 
 .actions {
@@ -228,7 +238,7 @@ nav a:hover {
   text-decoration: none;
   border-radius: 2px;
   border: 1px solid transparent;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s var(--ease);
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s var(--ease), box-shadow 0.25s ease;
 }
 
 .btn:hover {
@@ -236,25 +246,26 @@ nav a:hover {
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, var(--butter) 0%, var(--butter-deep) 100%);
-  color: #5a4020;
-  box-shadow: 0 6px 20px rgba(243, 215, 138, 0.35);
+  background: linear-gradient(135deg, #ff3d7a 0%, #b51f6a 55%, #5b2d9e 100%);
+  color: #fff;
+  box-shadow: 0 0 24px rgba(255, 61, 122, 0.35);
 }
 
 .btn.primary:hover {
-  background: linear-gradient(135deg, #f8e4a8 0%, var(--butter) 100%);
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff3d7a 50%, #7a3fc4 100%);
+  box-shadow: 0 0 32px rgba(255, 61, 122, 0.5);
 }
 
 .btn.ghost {
-  border-color: var(--line);
-  color: var(--ink-soft);
-  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(201, 196, 214, 0.35);
+  color: var(--silver);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .btn.ghost:hover {
-  border-color: var(--blush);
-  color: var(--blush-deep);
-  background: rgba(255, 232, 239, 0.7);
+  border-color: var(--magenta-soft);
+  color: var(--ink);
+  background: rgba(255, 61, 122, 0.12);
 }
 
 .section-head {
@@ -279,26 +290,26 @@ nav a:hover {
 
 .section-head h2 {
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.65rem;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: 1.45rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
   color: var(--ink);
 }
 
 .price-title {
   position: relative;
-  font-size: clamp(2.4rem, 8vw, 3.4rem);
-  font-style: italic;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
   font-weight: 600;
-  letter-spacing: 0.04em;
+  font-style: normal;
+  letter-spacing: 0.14em;
   line-height: 1;
   color: transparent;
-  background: linear-gradient(120deg, #c44d68 0%, #e8899c 45%, #e8c56a 100%);
+  background: linear-gradient(120deg, #ff6b9d 0%, #ff3d7a 40%, #c4a8e8 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  text-shadow: none;
-  filter: drop-shadow(0 8px 18px rgba(196, 77, 104, 0.22));
+  filter: drop-shadow(0 0 18px rgba(255, 61, 122, 0.45));
   animation: sticker-float 3.2s ease-in-out 0.4s infinite;
 }
 
@@ -306,11 +317,11 @@ nav a:hover {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -0.35rem;
+  bottom: -0.4rem;
   width: 68%;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, #f3d78a 20%, #f2a8b8 50%, #f3d78a 80%, transparent);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff3d7a 25%, #c4a8e8 50%, #ff3d7a 75%, transparent);
+  box-shadow: 0 0 12px rgba(255, 61, 122, 0.6);
   transform: translateX(-50%);
 }
 
@@ -322,6 +333,7 @@ nav a:hover {
   pointer-events: none;
   user-select: none;
   animation: sticker-float 3.2s ease-in-out 0.4s infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 61, 122, 0.3));
 }
 
 .price-head .section-sticker {
@@ -340,11 +352,11 @@ nav a:hover {
   font-size: 0.95rem;
   font-weight: 600;
   line-height: 1.4;
-  color: var(--blush-deep);
+  color: var(--magenta-soft);
   text-align: center;
-  background: linear-gradient(90deg, rgba(243, 215, 138, 0.35), rgba(242, 168, 184, 0.28));
-  border: 1px solid rgba(196, 77, 104, 0.18);
-  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(91, 45, 158, 0.35), rgba(255, 61, 122, 0.2));
+  border: 1px solid rgba(255, 61, 122, 0.28);
+  border-radius: 2px;
 }
 
 .price {
@@ -354,18 +366,19 @@ nav a:hover {
 
 .menu {
   padding: 1.35rem 1.25rem 1.5rem;
-  background: rgba(255, 250, 246, 0.72);
-  border: 1px solid rgba(196, 77, 104, 0.16);
-  border-radius: 10px;
+  background: var(--panel);
+  border: 1px solid rgba(255, 61, 122, 0.22);
+  border-radius: 4px;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 18px 40px rgba(196, 77, 104, 0.08);
-  backdrop-filter: blur(8px);
+    0 0 0 1px rgba(196, 168, 232, 0.08) inset,
+    0 20px 50px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(255, 61, 122, 0.08);
+  backdrop-filter: blur(12px);
 }
 
 .menu-block {
   padding: 1.15rem 0;
-  border-top: 1px dashed rgba(196, 77, 104, 0.22);
+  border-top: 1px dashed rgba(196, 168, 232, 0.22);
 }
 
 .menu-block:first-of-type {
@@ -386,11 +399,11 @@ nav a:hover {
 }
 
 .menu-num {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 0.95rem;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--butter-deep);
+  letter-spacing: 0.12em;
+  color: var(--silver);
 }
 
 .menu-label h3 {
@@ -399,7 +412,7 @@ nav a:hover {
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--blush-deep);
+  color: var(--magenta-soft);
 }
 
 .menu-tag {
@@ -408,9 +421,10 @@ nav a:hover {
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.03em;
-  color: var(--ink-soft);
-  background: rgba(243, 215, 138, 0.45);
-  border-radius: 999px;
+  color: var(--lavender);
+  background: rgba(139, 92, 246, 0.25);
+  border: 1px solid rgba(196, 168, 232, 0.25);
+  border-radius: 2px;
 }
 
 .menu-list {
@@ -452,7 +466,7 @@ nav a:hover {
   margin-bottom: 0.35rem;
   min-width: 1.5rem;
   height: 1px;
-  border-bottom: 1.5px dotted rgba(196, 77, 104, 0.35);
+  border-bottom: 1.5px dotted rgba(255, 61, 122, 0.4);
 }
 
 .menu-price {
@@ -460,10 +474,11 @@ nav a:hover {
   font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--blush-deep);
+  color: var(--magenta);
   white-space: nowrap;
   line-height: 1;
   padding-bottom: 0.1rem;
+  text-shadow: 0 0 16px rgba(255, 61, 122, 0.35);
 }
 
 .pulls-block .menu-label {
@@ -474,9 +489,9 @@ nav a:hover {
   display: grid;
   gap: 1rem;
   padding: 1rem 1rem 1.1rem;
-  background: linear-gradient(145deg, rgba(255, 248, 235, 0.9), rgba(255, 232, 239, 0.75));
-  border: 1px solid rgba(196, 77, 104, 0.16);
-  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(91, 45, 158, 0.28), rgba(255, 61, 122, 0.12));
+  border: 1px solid rgba(255, 61, 122, 0.25);
+  border-radius: 2px;
 }
 
 .pull-top {
@@ -496,7 +511,7 @@ nav a:hover {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--blush-deep);
+  color: var(--magenta-soft);
   white-space: nowrap;
 }
 
@@ -514,13 +529,14 @@ nav a:hover {
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    #f3d78a 0%,
-    #f2a8b8 var(--fill),
-    rgba(196, 77, 104, 0.16) var(--fill),
-    rgba(196, 77, 104, 0.16) 100%
+    #ff3d7a 0%,
+    #8b5cf6 var(--fill),
+    rgba(201, 196, 214, 0.18) var(--fill),
+    rgba(201, 196, 214, 0.18) 100%
   );
   outline: none;
   cursor: pointer;
+  box-shadow: 0 0 12px rgba(255, 61, 122, 0.2);
 }
 
 .pull-slider::-webkit-slider-thumb {
@@ -528,9 +544,9 @@ nav a:hover {
   width: 1.35rem;
   height: 1.35rem;
   border-radius: 50%;
-  background: linear-gradient(145deg, #fff6ea, #f2a8b8);
-  border: 2px solid #c44d68;
-  box-shadow: 0 4px 12px rgba(196, 77, 104, 0.28);
+  background: linear-gradient(145deg, #ff6b9d, #ff3d7a);
+  border: 2px solid #f3eaf8;
+  box-shadow: 0 0 16px rgba(255, 61, 122, 0.55);
   transition: transform 0.15s ease;
 }
 
@@ -542,9 +558,9 @@ nav a:hover {
   width: 1.35rem;
   height: 1.35rem;
   border-radius: 50%;
-  background: linear-gradient(145deg, #fff6ea, #f2a8b8);
-  border: 2px solid #c44d68;
-  box-shadow: 0 4px 12px rgba(196, 77, 104, 0.28);
+  background: linear-gradient(145deg, #ff6b9d, #ff3d7a);
+  border: 2px solid #f3eaf8;
+  box-shadow: 0 0 16px rgba(255, 61, 122, 0.55);
 }
 
 .pull-slider::-moz-range-track {
@@ -554,7 +570,7 @@ nav a:hover {
 }
 
 .pull-slider:focus-visible {
-  outline: 2px solid var(--blush);
+  outline: 2px solid var(--magenta);
   outline-offset: 4px;
 }
 
@@ -572,13 +588,13 @@ nav a:hover {
   justify-content: space-between;
   gap: 0.75rem;
   padding-top: 0.15rem;
-  border-top: 1px dashed rgba(196, 77, 104, 0.22);
+  border-top: 1px dashed rgba(196, 168, 232, 0.25);
 }
 
 .pull-total-label {
   font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -588,8 +604,9 @@ nav a:hover {
   font-size: 1.85rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: var(--blush-deep);
+  color: var(--magenta);
   line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 61, 122, 0.4);
 }
 
 .reviews-cta {
@@ -609,10 +626,10 @@ nav a:hover {
   align-items: center;
   padding: 1.2rem 1.25rem;
   text-decoration: none;
-  background: linear-gradient(125deg, rgba(243, 215, 138, 0.42), rgba(242, 168, 184, 0.38));
-  border: 1px solid rgba(196, 77, 104, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 14px 32px rgba(196, 77, 104, 0.1);
+  background: linear-gradient(125deg, rgba(91, 45, 158, 0.45), rgba(255, 61, 122, 0.28));
+  border: 1px solid rgba(255, 61, 122, 0.35);
+  border-radius: 2px;
+  box-shadow: 0 0 30px rgba(255, 61, 122, 0.15);
   overflow: hidden;
   transition: transform 0.25s var(--ease), box-shadow 0.25s ease;
 }
@@ -621,7 +638,7 @@ nav a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.12) 50%, transparent 70%);
   transform: translateX(-120%);
   transition: transform 0.6s var(--ease);
   pointer-events: none;
@@ -629,7 +646,7 @@ nav a:hover {
 
 .reviews-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(196, 77, 104, 0.16);
+  box-shadow: 0 0 40px rgba(255, 61, 122, 0.3);
 }
 
 .reviews-link:hover::before {
@@ -640,32 +657,32 @@ nav a:hover {
   grid-area: kicker;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--lavender);
 }
 
 .reviews-title {
   grid-area: title;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.85rem;
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: 1.65rem;
   font-weight: 600;
-  font-style: italic;
+  letter-spacing: 0.08em;
   line-height: 1.1;
-  color: var(--blush-deep);
+  color: var(--ink);
 }
 
 .reviews-handle {
   grid-area: handle;
   font-size: 0.92rem;
   font-weight: 600;
-  color: var(--ink-soft);
+  color: var(--magenta-soft);
 }
 
 .reviews-arrow {
   grid-area: arrow;
   font-size: 1.6rem;
-  color: var(--blush-deep);
+  color: var(--magenta);
   transition: transform 0.25s var(--ease);
 }
 
@@ -714,11 +731,11 @@ nav a:hover {
 }
 
 .contact-link:hover .contact-label {
-  color: var(--blush-deep);
+  color: var(--magenta-soft);
 }
 
 .contact-link:hover .contact-value {
-  color: var(--butter-deep);
+  color: var(--lavender);
 }
 
 .foot {
@@ -727,7 +744,7 @@ nav a:hover {
   gap: 0.5rem;
   padding: 0 0 2.5rem;
   font-size: 0.75rem;
-  color: rgba(168, 132, 144, 0.7);
+  color: rgba(154, 135, 176, 0.65);
 }
 
 .sep {

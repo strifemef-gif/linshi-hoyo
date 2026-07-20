@@ -1,0 +1,4 @@
+# Ignore OS junk only — site files must be published
+.DS_Store
+Thumbs.db
+desktop.ini
